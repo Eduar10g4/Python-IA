@@ -68,7 +68,7 @@ class sistemadereglas(KnowledgeEngine):
     @Rule(AND(reglas(tos_persistente="no")),(reglas(dificultad_respirar="no")),(reglas(fiebre_reciente="si")),(reglas(dolor_pecho="no")),(reglas(congestion_nasal="si")))
     def m16(self):
         self.respuestas.append('El paciente presenta un resfriado')
-
+        
     @Rule(AND(reglas(tos_persistente="no")),(reglas(dificultad_respirar="no")),(reglas(fiebre_reciente="si")),(reglas(dolor_pecho="si")),(reglas(congestion_nasal="no")))
     def m17(self):
         self.respuestas.append('infección renal aguda')
