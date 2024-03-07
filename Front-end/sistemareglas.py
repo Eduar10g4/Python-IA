@@ -71,104 +71,104 @@ class sistemadereglas(KnowledgeEngine):
 
     @Rule(AND(reglas(tos_persistente="no")),(reglas(dificultad_respirar="no")),(reglas(fiebre_reciente="si")),(reglas(dolor_pecho="si")),(reglas(congestion_nasal="no")))
     def m17(self):
-        self.respuestas.append('infección renal aguda')
+        self.respuestas.append('El paciente representa Embolia Pulmonar')
 
     @Rule(AND(reglas(tos_persistente="no")),(reglas(dificultad_respirar="no")),(reglas(fiebre_reciente="si")),(reglas(dolor_pecho="si")),(reglas(congestion_nasal="si")))
     def m18(self):
-        self.respuestas.append('pielonefritis ')
+        self.respuestas.append('El paciente Infección Respiratoria Superior')
 
     @Rule(AND(reglas(tos_persistente="no")),(reglas(dificultad_respirar="si")),(reglas(fiebre_reciente="no")),(reglas(dolor_pecho="no")),(reglas(congestion_nasal="no")))
     def m19(self):
-        self.respuestas.append('Traumatismo')
+        self.respuestas.append('El paciente presenta posible ataque de Asma')
 
     @Rule(AND(reglas(tos_persistente="no")),(reglas(dificultad_respirar="si")),(reglas(fiebre_reciente="no")),(reglas(dolor_pecho="no")),(reglas(congestion_nasal="si")))
     def m20(self):
-        self.respuestas.append('Infección del tracto urinario')
+        self.respuestas.append('El paciente presenta Rinitis alérgica')
 
     @Rule(AND(reglas(tos_persistente="no")),(reglas(dificultad_respirar="si")),(reglas(fiebre_reciente="no")),(reglas(dolor_pecho="si")),(reglas(congestion_nasal="no")))
     def m21(self):
-        self.respuestas.append('Enfermedad renal poliquística')
+        self.respuestas.append('El paciente presente posible Neumonía')
 
     @Rule(AND(reglas(tos_persistente="no")),(reglas(dificultad_respirar="si")),(reglas(fiebre_reciente="no")),(reglas(dolor_pecho="si")),(reglas(congestion_nasal="si")))
     def m22(self):
-        self.respuestas.append('Lesiones o traumas')
+        self.respuestas.append('El paciente presenta posible Insuficiencia Cardíaca Congestiva')
 
     @Rule(AND(reglas(tos_persistente="no")),(reglas(dificultad_respirar="si")),(reglas(fiebre_reciente="si")),(reglas(dolor_pecho="no")),(reglas(congestion_nasal="no")))
     def m23(self):
-        self.respuestas.append('Tumores del sistema urinario')
+        self.respuestas.append('El paciente presente posible Asma Aguda')
 
     @Rule(AND(reglas(tos_persistente="no")),(reglas(dificultad_respirar="si")),(reglas(fiebre_reciente="si")),(reglas(dolor_pecho="no")),(reglas(congestion_nasal="si")))
     def m24(self):
-        self.respuestas.append('Inflamación de la vejiga')
+        self.respuestas.append('Puede ser una Reacción alérgica grave (anafilaxia)')
 
     @Rule(AND(reglas(tos_persistente="no")),(reglas(dificultad_respirar="si")),(reglas(fiebre_reciente="si")),(reglas(dolor_pecho="si")),(reglas(congestion_nasal="no")))
     def m25(self):
-        self.respuestas.append('cáncer de riñón')
+        self.respuestas.append('Puede ser posible una Asma Grave o Exacerbación de Asma, por favor acudir al medico.')
 
     @Rule(AND(reglas(tos_persistente="no")),(reglas(dificultad_respirar="si")),(reglas(fiebre_reciente="si")),(reglas(dolor_pecho="si")),(reglas(congestion_nasal="si")))
     def m26(self):
-        self.respuestas.append('cáncer de riñón grado 2')
+        self.respuestas.append('Puede ser posible una Insuficiencia Cardíaca')
 
     @Rule(AND(reglas(tos_persistente="si")),(reglas(dificultad_respirar="no")),(reglas(fiebre_reciente="no")),(reglas(dolor_pecho="no")),(reglas(congestion_nasal="no")))
     def m27(self):
-        self.respuestas.append('Uretritis')
+        self.respuestas.append('Pueda que el paciente tenga un Reflujo Gastroesofágico (ERGE)')
 
     @Rule(AND(reglas(tos_persistente="si")),(reglas(dificultad_respirar="no")),(reglas(fiebre_reciente="no")),(reglas(dolor_pecho="no")),(reglas(congestion_nasal="si")))
     def m28(self):
-        self.respuestas.append('Enfermedades de Transmisión Sexual')
+        self.respuestas.append('El paciente presenta posible Resfriado común')
 
     @Rule(AND(reglas(tos_persistente="si")),(reglas(dificultad_respirar="no")),(reglas(fiebre_reciente="no")),(reglas(dolor_pecho="si")),(reglas(congestion_nasal="no")))
     def m29(self):
-        self.respuestas.append('Infección renal / Otras afecciones')
+        self.respuestas.append('Pueda que el paciente presente Bronquiectasia')
 
     @Rule(AND(reglas(tos_persistente="si")),(reglas(dificultad_respirar="no")),(reglas(fiebre_reciente="no")),(reglas(dolor_pecho="si")),(reglas(congestion_nasal="si")))
     def m30(self):
-        self.respuestas.append('Infección del Tracto Urinario / Otras afecciones')
+        self.respuestas.append('El paciente presenta Sinusitis')
 
     @Rule(AND(reglas(tos_persistente="si")),(reglas(dificultad_respirar="no")),(reglas(fiebre_reciente="si")),(reglas(dolor_pecho="no")),(reglas(congestion_nasal="no")))
     def m31(self):
-        self.respuestas.append('Uretritis / Endometriosis')
+        self.respuestas.append('Pueda que el paciente presente Infecciones Virales Respiratorias')
 
     @Rule(AND(reglas(tos_persistente="si")),(reglas(dificultad_respirar="no")),(reglas(fiebre_reciente="si")),(reglas(dolor_pecho="no")),(reglas(congestion_nasal="si")))
     def m32(self):
-        self.respuestas.append('Pielonefritis')
+        self.respuestas.append('Pueda que el paciente presente Influenza (gripe)')
 
     @Rule(AND(reglas(tos_persistente="si")),(reglas(dificultad_respirar="no")),(reglas(fiebre_reciente="si")),(reglas(dolor_pecho="si")),(reglas(congestion_nasal="no")))
     def m33(self):
-        self.respuestas.append('Infeccion en el riñon')
+        self.respuestas.append('El paciente presenta Bronquiolitis')
 
     @Rule(AND(reglas(tos_persistente="si")),(reglas(dificultad_respirar="no")),(reglas(fiebre_reciente="si")),(reglas(dolor_pecho="si")),(reglas(congestion_nasal="si")))
     def m34(self):
-        self.respuestas.append('Cáncer de Riñón / Otras afeccione')
+        self.respuestas.append('Pueda que el paciente presente Bronquitis')
 
     @Rule(AND(reglas(tos_persistente="si")),(reglas(dificultad_respirar="si")),(reglas(fiebre_reciente="no")),(reglas(dolor_pecho="no")),(reglas(congestion_nasal="no")))
     def m35(self):
-        self.respuestas.append('Traumatismo urinario')
+        self.respuestas.append('Pueda que el paciente presente Enfermedad Pulmonar Obstructiva Crónica (EPOC), acuda a su medico de confianza')
 
     @Rule(AND(reglas(tos_persistente="si")),(reglas(dificultad_respirar="si")),(reglas(fiebre_reciente="no")),(reglas(dolor_pecho="no")),(reglas(congestion_nasal="si")))
     def m36(self):
-        self.respuestas.append('Cálculos renales / Cistitis intersticial / Otras enfermedades renales')
+        self.respuestas.append('Pueda que el paciente presente Rinitis Alérgica o Infección Sinusa')
 
     @Rule(AND(reglas(tos_persistente="si")),(reglas(dificultad_respirar="si")),(reglas(fiebre_reciente="no")),(reglas(dolor_pecho="si")),(reglas(congestion_nasal="no")))
     def m37(self):
-        self.respuestas.append('Cáncer de riñón o vejiga')
+        self.respuestas.append('Es posible que el paciente presente Neumonía o Bronquitis Crónica')
 
     @Rule(AND(reglas(tos_persistente="si")),(reglas(dificultad_respirar="si")),(reglas(fiebre_reciente="no")),(reglas(dolor_pecho="si")),(reglas(congestion_nasal="si")))
     def m38(self):
-        self.respuestas.append('Infección del tracto urinario grave / pielonefritis')
+        self.respuestas.append('Es posible que el paciente presente Insuficiencia Cardíaca Congestiva, acuda a su medico de confianza')
 
     @Rule(AND(reglas(tos_persistente="si")),(reglas(dificultad_respirar="si")),(reglas(fiebre_reciente="si")),(reglas(dolor_pecho="no")),(reglas(congestion_nasal="no")))
     def m39(self):
-        self.respuestas.append('ITU/cistitis')
+        self.respuestas.append('El paciente presenta Infecciones respiratorias virales')
 
     @Rule(AND(reglas(tos_persistente="si")),(reglas(dificultad_respirar="si")),(reglas(fiebre_reciente="si")),(reglas(dolor_pecho="no")),(reglas(congestion_nasal="si")))
     def m40(self):
-        self.respuestas.append('Cistitis Aguda')
+        self.respuestas.append('Es posible que el paciente presente Sinusitis o Neumonía')
 
     @Rule(AND(reglas(tos_persistente="si")),(reglas(dificultad_respirar="si")),(reglas(fiebre_reciente="si")),(reglas(dolor_pecho="si")),(reglas(congestion_nasal="no")))
     def m41(self):
-        self.respuestas.append('Enfermedad renal poliquística / Problemas de vejiga')
+        self.respuestas.append('Es posible que el paciente presente Bronquitis o Asma')
 
     @Rule(AND(reglas(tos_persistente="si")),(reglas(dificultad_respirar="si")),(reglas(fiebre_reciente="si")),(reglas(dolor_pecho="si")),(reglas(congestion_nasal="si")))
     def m42(self):
-        self.respuestas.append('pielonefritis aguda')
+        self.respuestas.append('El paciente tiene COVID-19')
