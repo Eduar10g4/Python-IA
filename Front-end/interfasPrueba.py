@@ -25,6 +25,8 @@ class MiApp(QDialog):
 
         # Obtener las respuestas de la interfaz de usuario
         nombre = self.ui.lineEdit.text()
+        apellido = self.ui.lineEdit_2.text()
+        cedula = self.ui.lineEdit_3.text()
 
 
         v_tos_persistente = "si" if self.ui.checkBox.isChecked() else ("no" if self.ui.checkBox_2.isChecked() else "")
@@ -55,38 +57,76 @@ class MiApp(QDialog):
         # Crear un diccionario con los datos del resultado actual
         resultado_dict = {
             "Nombre": nombre,
+            "Apellido": apellido,
+            "Cedula": cedula,
             "¿Tiene tos persistente?": v_tos_persistente,
             "¿Experimenta dificultad para respirar?": v_dificultad_respirar,
             "¿Ha tenido fiebre recientemente?": v_fiebre_reciente,
             "¿Ha experimentado dolor en el pecho?": v_dolor_pecho,
             "¿Ha tenido congestión nasal o secreción nasal?": v_congestion_nasal,
-            #"respuestas": engine.respuestas
+            "respuestas": engine.respuestas
         }
 
         # Ejecutar el sistema de reglas
         engine.run()
 
-        """""
-        # Agregar las respuestas del motor de reglas al diccionario
-        resultado_dict["respuestas"] = engine.respuestas
+        # Enviar los resultados al endpoint en Flask
+        url = 'http://localhost:5000/guardar_historial'  # Reemplaza esto con la URL de tu endpoint
+        headers = {'Content-Type': 'application/json'}
+        response = requests.post(url, data=json.dumps(resultado_dict), headers=headers)
+        print(response.json())
+        #print("Historial guardado exitosamente")
 
-        url = 'http://localhost:5000/guardar_historial'
-        try:
-             # Realizar la solicitud GET
-             response = requests.get(url)
+    def buscar_usuario(self):
+     # Obtener la cédula ingresada
+     cedula = self.ui.lineEdit_4.text()
 
-            # Verificar si la solicitud fue exitosa
-             if response.status_code == 200:
-                historial_data = response.json()
-                for registro in historial_data:
-                    print(registro)
-                QMessageBox.information(self, "Consulta Exitosa", "Historial consultado correctamente.")
-             else:
-                QMessageBox.warning(self, "Error", f"Error al obtener los datos del historial: {response.status_code}")
-        except Exception as e:
-            QMessageBox.critical(self, "Error", f"Error durante la solicitud GET: {e}")       
-        
-         """
+        # Realizar la solicitud GET al endpoint con la cédula como parámetro
+     url = f'http://localhost:5000/guardar_historial?cedula={cedula}'
+     response = requests.get(url)
+
+     # Verificar si la solicitud fue exitosa
+     if response.status_code == 200:
+        # Obtener los datos de la respuesta JSON
+        data = response.json()
+
+        # Actualizar la interfaz con los datos obtenidos
+        if data:
+            usuario = data[0]  # Suponiendo que solo se devuelve un usuario
+            nombre = usuario.get('nombre', '')
+            apellido = usuario.get('apellido', '')
+            respuesta = usuario.get('respuesta', '')
+
+            # Actualizar la interfaz con los datos obtenidos
+            self.ui.lineEdit.setText(nombre)
+            self.ui.lineEdit_2.setText(apellido)
+            self.ui.lineEdit_3.setText(respuesta)
+
+              # Limpiar la tabla antes de agregar nuevos datos
+            self.ui.tableWidget.setRowCount(0)
+
+            # Agregar los datos a la tabla
+            for row, usuario in enumerate(data):
+                nombre = usuario.get('nombre', '')
+                apellido = usuario.get('apellido', '')
+                respuesta = usuario.get('respuesta', '')
+
+                # Insertar los datos en la fila correspondiente de la tabla
+                self.ui.tableWidget.insertRow(row)
+                self.ui.tableWidget.setItem(row, 0, QTableWidgetItem(nombre))
+                self.ui.tableWidget.setItem(row, 1, QTableWidgetItem(apellido))
+                self.ui.tableWidget.setItem(row, 2, QTableWidgetItem(respuesta))
+
+        else:
+            # Limpiar los campos si no se encontraron datos
+            self.ui.lineEdit.setText('')
+            self.ui.lineEdit_2.setText('')
+            self.ui.lineEdit_3.setText('')
+
+     else:
+        # Mostrar un mensaje de error si la solicitud no fue exitosa
+        print("Error al obtener los datos del usuario:", response.status_code)
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
